@@ -1,8 +1,11 @@
 // src/components/ProductsPage.jsx
 import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "../styles.css";
+
+// Move constant outside component (fixes ESLint warning)
+const fabricTypes = ["Cotton", "Silk", "Wool", "Linen"];
 
 function Modal({ product, onClose }) {
   if (!product) return null;
@@ -14,7 +17,6 @@ function Modal({ product, onClose }) {
         <img src={product.imageURL} alt={product.title} />
         <p>{product.description}</p>
 
-        {/* Additional details */}
         <p><strong>Fabric Type:</strong> {product.type}</p>
         <p><strong>Category:</strong> {product.category}</p>
         <p><strong>Care:</strong> {product.care}</p>
@@ -24,6 +26,7 @@ function Modal({ product, onClose }) {
           <span>Price: ₹{product.price}</span>
           <span>Stock: {product.stock}</span>
         </p>
+
         <button onClick={onClose} className="close-btn">Close</button>
       </div>
     </div>
@@ -33,21 +36,22 @@ function Modal({ product, onClose }) {
 export default function ProductsPage() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const typeFromQuery = queryParams.get("type"); // Read type from URL query
+  const typeFromQuery = queryParams.get("type");
 
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState(typeFromQuery || "All");
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { addToCart } = useCart();
 
-  const fabricTypes = ["Cotton", "Silk", "Wool", "Linen"];
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProductsByType = async (type) => {
       const response = await fetch(
         `https://api.unsplash.com/search/photos?query=${type}+fabric&per_page=5&client_id=pNnM32pfVS32O67pIJn_fOFNs8kmSMT4oDe0mCOikSU`
       );
+
       const data = await response.json();
+
       return data.results.map((img) => ({
         id: img.id,
         title: img.alt_description || `${type} Fabric`,
@@ -58,7 +62,9 @@ export default function ProductsPage() {
         type: type,
         category: "Textile",
         care: "Hand wash or gentle machine wash",
-        pattern: ["Plain", "Striped", "Checked", "Polka"][Math.floor(Math.random() * 4)],
+        pattern: ["Plain", "Striped", "Checked", "Polka"][
+          Math.floor(Math.random() * 4)
+        ],
       }));
     };
 
@@ -67,6 +73,7 @@ export default function ProductsPage() {
         const allProductsArrays = await Promise.all(
           fabricTypes.map((type) => fetchProductsByType(type))
         );
+
         setProducts(allProductsArrays.flat());
       } catch (error) {
         console.error("Error fetching Unsplash images:", error);
@@ -79,37 +86,54 @@ export default function ProductsPage() {
   const filteredProducts =
     filter === "All"
       ? products
-      : products.filter((p) => p.type.toLowerCase().includes(filter.toLowerCase()));
+      : products.filter((p) =>
+          p.type.toLowerCase().includes(filter.toLowerCase())
+        );
 
   return (
     <div>
+
       {/* Filter Bar */}
       <div className="filter-bar">
-        <button
-          className={`filter-btn ${filter === "All" ? "active-filter" : ""}`}
-          onClick={() => setFilter("All")}
-        >
-          All
-        </button>
-        {fabricTypes.map((type) => (
+
+        <div className="filter-buttons">
           <button
-            key={type}
-            className={`filter-btn ${filter === type ? "active-filter" : ""}`}
-            onClick={() => setFilter(type)}
+            className={`filter-btn ${filter === "All" ? "active-filter" : ""}`}
+            onClick={() => setFilter("All")}
           >
-            {type}
+            All
           </button>
-        ))}
+
+          {fabricTypes.map((type) => (
+            <button
+              key={type}
+              className={`filter-btn ${filter === type ? "active-filter" : ""}`}
+              onClick={() => setFilter(type)}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
+
+        {/* Go to Cart */}
+        <Link to="/user/cart" className="cart-btn">
+          🛒 Go to Cart
+        </Link>
+
       </div>
 
       {/* Products Grid */}
       <div className="homepage-products-grid">
+
         {filteredProducts.length === 0 && <p>Loading products...</p>}
 
         {filteredProducts.map((p) => (
           <div className="glass-card" key={p.id}>
+
             <img src={p.imageURL} alt={p.title} />
+
             <h4>{p.title}</h4>
+
             <p>{p.description}</p>
 
             <div className="meta-info">
@@ -123,6 +147,7 @@ export default function ProductsPage() {
             </p>
 
             <div className="card-buttons">
+
               <button
                 disabled={p.stock === 0}
                 onClick={() => addToCart(p)}
@@ -130,19 +155,26 @@ export default function ProductsPage() {
               >
                 {p.stock === 0 ? "Out of Stock" : "Add to Cart"}
               </button>
+
               <button
                 onClick={() => setSelectedProduct(p)}
                 className="read-more-btn"
               >
                 Read More
               </button>
+
             </div>
+
           </div>
         ))}
       </div>
 
-      {/* Modal */}
-      <Modal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+      {/* Product Modal */}
+      <Modal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
+
     </div>
   );
 }
