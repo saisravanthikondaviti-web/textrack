@@ -50,7 +50,7 @@
 .price {
   margin: 5px 0;
   font-weight: 500;
-  color: #4cafef;
+  color: #ebb00e;
 }
 
 .quantity-control {
@@ -61,7 +61,7 @@
 }
 
 .quantity-control button {
-  background: #4cafef;
+  background: #f3a515;
   border: none;
   padding: 6px 12px;
   color: white;
@@ -91,7 +91,7 @@
 .checkout-btn {
   margin-top: 10px;
   padding: 12px 25px;
-  background: linear-gradient(135deg, #4cafef, #007bff);
+  background: linear-gradient(135deg, #0d9c24, #13c932);
   border: none;
   color: white;
   border-radius: 8px;
