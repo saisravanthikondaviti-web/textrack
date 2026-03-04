@@ -146,33 +146,26 @@ export default function HomePage() {
       <section className="contact-section">
   <h2>Contact Us</h2>
   <p className="contact-subtitle">
-    We’re here to help. Reach out anytime.
+    We'd love to hear from you. Send us a message anytime.
   </p>
 
-  <div className="contact-list">
+  <div className="contact-container">
 
-    <div className="contact-row">
-      <div className="icon">✉️</div>
-      <div>
-        <h3>Email</h3>
-        <p>support@textiletrack.in</p>
-      </div>
+    {/* Image */}
+    <div className="contact-image">
+      <img
+        src="https://i.pinimg.com/736x/08/2d/16/082d167996faea7785da4cd606df4e03.jpg"
+        alt="Textile"
+      />
     </div>
 
-    <div className="contact-row">
-      <div className="icon">📞</div>
-      <div>
-        <h3>Phone</h3>
-        <p>+91 98765 43210</p>
-      </div>
-    </div>
-
-    <div className="contact-row">
-      <div className="icon">📍</div>
-      <div>
-        <h3>Address</h3>
-        <p>123 Textile Street, India</p>
-      </div>
+    {/* Contact Form */}
+    <div className="contact-form">
+      <input type="text" placeholder="Your Name" />
+      <input type="email" placeholder="Email Address" />
+      <input type="text" placeholder="Subject" />
+      <textarea placeholder="Your Message"></textarea>
+      <button>Send Message</button>
     </div>
 
   </div>

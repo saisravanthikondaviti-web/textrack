@@ -3,6 +3,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
+import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -19,7 +20,10 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <h2 className="logo">TextileTrack</h2>
+      <h2 className="logo">
+        <img src={logo} alt="TextileTrack Logo" className="logo-img" />
+        TextileTrack
+      </h2>
 
       {/* Hamburger Icon */}
       <div
