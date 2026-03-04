@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
 import logo from "../assets/logo.png";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -41,7 +42,13 @@ export default function Navbar() {
         <NavLink to="/user/products" onClick={() => setMenuOpen(false)}>Products</NavLink>
         <NavLink to="/user/cart" onClick={() => setMenuOpen(false)}>Cart</NavLink>
         <NavLink to="/user/orders" onClick={() => setMenuOpen(false)}>Orders</NavLink>
-        <NavLink to="/user/profile" onClick={() => setMenuOpen(false)}>Profile</NavLink>
+        <NavLink
+          to="/user/profile"
+          className="profile-icon"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaUserCircle size={26} />
+        </NavLink>
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
