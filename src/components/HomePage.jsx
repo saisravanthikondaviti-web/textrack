@@ -144,27 +144,64 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section id="faq" className="faq-section">
         <h2>Frequently Asked Questions</h2>
+
         <div className="faq-container">
+
           <div className="faq-card">
             <h3>How do I order regional textiles?</h3>
             <p>
-              Browse the featured textiles, add to cart, and checkout easily.
+              Browse the featured textiles, add your preferred items to the cart,
+              and complete the checkout process easily.
             </p>
           </div>
+
           <div className="faq-card">
             <h3>Do you deliver nationwide?</h3>
             <p>
-              Yes! We deliver authentic Indian textiles across all states in
-              India.
+              Yes! We deliver authentic Indian textiles across all states in India.
             </p>
           </div>
+
           <div className="faq-card">
             <h3>Are the textiles authentic?</h3>
             <p>
-              All our products are sourced directly from certified local
-              artisans and weavers.
+              All our products are sourced directly from certified local artisans
+              and weavers to ensure authenticity and quality.
             </p>
           </div>
+
+          <div className="faq-card">
+            <h3>What payment methods are available?</h3>
+            <p>
+              We support secure online payments including UPI, debit cards,
+              credit cards, and net banking.
+            </p>
+          </div>
+
+          <div className="faq-card">
+            <h3>Can I track my order?</h3>
+            <p>
+              Yes. Once your order is placed, you can track the delivery status
+              through your account dashboard.
+            </p>
+          </div>
+
+          <div className="faq-card">
+            <h3>How should I care for traditional fabrics?</h3>
+            <p>
+              Most traditional fabrics like silk and handloom cotton should be
+              hand-washed or dry-cleaned to maintain their quality and color.
+            </p>
+          </div>
+
+          <div className="faq-card">
+            <h3>Can I return or exchange a product?</h3>
+            <p>
+              Yes. We offer a return or exchange option within 7 days of delivery
+              if the product is unused and in its original condition.
+            </p>
+          </div>
+
         </div>
       </section>
 
