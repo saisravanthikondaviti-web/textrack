@@ -1664,126 +1664,151 @@ html {
 }
 
 /* Glass cards already have frosted glass effect, no changes needed */
-
-/* Login Page Container */
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-image: url('https://t3.ftcdn.net/jpg/18/61/98/80/360_F_1861988049_12Haq9xWVlz0kba1ywsrqhhFcZOUEFA1.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* Glass effect wrapper */
-.login-wrapper {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(35px);
-  border-radius: 20px;
-  padding: 40px 30px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  /* spacing between items */
-}
-
-/* Title */
+/* Page Layout */
 .login-page {
   height: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 120px;
+  font-family: "Segoe UI", sans-serif;
+  color: white;
 }
 
+/* Container */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
 }
 
+/* Brand highlight */
+.brand {
+  color: #ff8c42;
+}
+
+/* Main Heading */
 .main-heading {
-  font-size: 42px;
+  font-size: 46px;
   font-weight: 700;
-  color: white;
-  margin-bottom: 25px;
+  line-height: 1.2;
   text-align: center;
-  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 420px;
+  color: #f5f5f5;
+  letter-spacing: 0.5px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
+
+/* Login Card */
+.login-wrapper {
+  width: 380px;
+  padding: 45px 40px;
+  border-radius: 18px;
+
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  transition: 0.3s ease;
+}
+
+.login-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* Title */
 .login-title {
-  margin-bottom: 10px;
   font-size: 1.8rem;
-  color: #ffffff
+  font-weight: 600;
+  text-align: center;
 }
 
-
-/* Input fields */
+/* Input Group (adds spacing between inputs) */
 .input-group {
-  width: 93%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 16px;
 }
 
+/* Input Fields */
 .input-group input {
   width: 100%;
   padding: 14px 16px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.404);
-  color: #fff;
-  transition: 0.3s;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.10);
+
+  font-size: 0.95rem;
+  color: white;
+
+  transition: 0.25s;
 }
 
+/* Placeholder */
 .input-group input::placeholder {
-  color: rgba(255, 255, 255, 0.851);
+  color: rgba(255,255,255,0.6);
 }
 
+/* Focus Effect */
 .input-group input:focus {
-  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  border: 1px solid #ff8c42;
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 0 8px rgba(255,140,66,0.6);
 }
 
-/* Auth button */
+/* Login Button */
 .auth-btn {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
+  padding: 14px;
+
   border: none;
-  background: #111c92;
-  color: #ffffff;
-  font-weight: bold;
+  border-radius: 10px;
+
+  font-weight: 600;
   font-size: 1rem;
+
+  color: white;
   cursor: pointer;
-  transition: 0.3s;
+
+  background: linear-gradient(135deg, #ff8c42, #e35d2a);
+
+  transition: 0.25s;
 }
 
 .auth-btn:hover {
-  background: #29097a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-/* Toggle login/signup */
-.auth-toggle {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+/* Signup Text */
+.signup-text {
   margin-top: 10px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
 }
 
-.auth-toggle span {
-  color: #16cd6c;
-  cursor: pointer;
-  margin-left: 5px;
-  font-weight: bold;
+.signup-text a {
+  color: #ff8c42;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.auth-toggle span:hover {
-  color: #0a8a30;
+.signup-text a:hover {
+  text-decoration: underline;
 }
 
 /* Admin Dashboard Container */
@@ -2558,3 +2583,13 @@ html {
   height: 40px;
   object-fit: contain;
 }
+
+/* about image to video conversion css */
+
+.about-image iframe{
+  width:100%;
+  height:350px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+

@@ -44,17 +44,17 @@ function App() {
 
 
   console.log({
-  Login,
-  UserDashboard,
-  AdminDashboard,
-  TextileDashboard,
-  HomePage,
-  ProductsPage,
-  CartPage,
-  Checkout,
-  OrdersPage,
-  ProfilePage
-});
+    Login,
+    UserDashboard,
+    AdminDashboard,
+    TextileDashboard,
+    HomePage,
+    ProductsPage,
+    CartPage,
+    Checkout,
+    OrdersPage,
+    ProfilePage
+  });
   return (
     <CartProvider>
       <BrowserRouter>

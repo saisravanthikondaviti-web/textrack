@@ -24,7 +24,6 @@ function Login() {
       setLoading(true);
 
       if (isLogin) {
-        // LOGIN
         const res = await signInWithEmailAndPassword(auth, email, password);
         const userRef = doc(db, "users", res.user.uid);
         const snap = await getDoc(userRef);
@@ -36,14 +35,15 @@ function Login() {
           alert("User role not found.");
         }
       } else {
-        // SIGNUP
         const res = await createUserWithEmailAndPassword(auth, email, password);
+
         await setDoc(doc(db, "users", res.user.uid), {
           email,
           role: "user",
           createdAt: new Date(),
         });
-        alert("Account created successfully! Please login.");
+
+        alert("Account created successfully!");
         setIsLogin(true);
       }
     } catch (err) {
@@ -55,49 +55,63 @@ function Login() {
 
   return (
     <div className="login-page">
+
+      {/* VIDEO BACKGROUND */}
+      <video autoPlay muted loop playsInline className="bg-video">
+        <source src="/textile-video.mp4" type="video/mp4" />
+      </video>
+
       <div className="login-container">
 
-        {/* ✅ Main Heading ABOVE the card */}
-        <h1 className="main-heading">Welcome to TextileTrack!!</h1>
+        <h1 class="main-heading">
+          Welcome to <span class="brand">TextileTrack</span>!!!
+        </h1>
 
-        <div className="login-wrapper glass">
+        <div className="login-wrapper">
+
           <h2 className="login-title">
-            {isLogin ? "Welcome Back 👋" : "Create Account 🚀"}
+            {isLogin ? "“Threads weave history into beauty.”" : "Create Account 🚀"}
           </h2>
 
-          <div className="input-group">
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          {/* FORM */}
+          <div className="form-group">
+
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="input-group">
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
           </div>
 
-          <div className="input-group">
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          <button
-            className="auth-btn"
-            onClick={handleAuth}
-            disabled={loading}
-          >
+          {/* BUTTON */}
+          <button className="auth-btn" onClick={handleAuth}>
             {loading ? "Please wait..." : isLogin ? "Login" : "Sign Up"}
           </button>
 
+          {/* TOGGLE LOGIN SIGNUP */}
           <p className="auth-toggle">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
+
             <span onClick={() => setIsLogin(!isLogin)}>
               {isLogin ? " Sign Up" : " Login"}
             </span>
           </p>
+
         </div>
+
       </div>
     </div>
   );
