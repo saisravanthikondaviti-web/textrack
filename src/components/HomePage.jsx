@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero-section">
+      <section id="home" className="hero-section">
         <div className="hero-overlay">
           <div className="hero-content">
             <h1>Explore India’s Finest Textiles</h1>
@@ -64,21 +64,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="about-section">
+      <section id="about" className="about-section">
         <div className="about-container">
 
           <div className="about-text">
             <h2>About TextileTrack India</h2>
+
             <p>
-              TextileTrack India helps textile businesses manage inventory,
-              track production, and improve efficiency with smart technology.
-              Our goal is to modernize the textile industry with simple and
-              powerful digital tools.
+              TextileTrack India is a smart platform designed to help textile
+              businesses manage inventory, track production, and streamline
+              operations with modern digital tools.
             </p>
+
             <p>
-              Built for manufacturers, wholesalers, and retailers — we bring
-              real-time tracking and data-driven insights to your business.
+              India's textile industry is one of the largest in the world,
+              known for its rich heritage, skilled craftsmanship, and global
+              exports.
             </p>
+
+            <div className="about-cards">
+              {aboutCards.map((card, index) => (
+                <div key={index} className="about-card">
+                  <h3>{card.title}</h3>
+                  <p>{card.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <ul className="about-points">
+              <li>Supports manufacturers, wholesalers, and retailers</li>
+              <li>Real-time textile inventory and order tracking</li>
+              <li>Improves efficiency and reduces manual work</li>
+              <li>Combines traditional textile knowledge with modern technology</li>
+              <li>Helps businesses make data-driven decisions</li>
+            </ul>
+
           </div>
 
           <div className="about-image">
@@ -96,7 +116,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="featured-section">
+      <section id="featured" className="featured-section">
         <h2>Featured Textiles Across India</h2>
 
         <div className="featured-cards">
@@ -122,7 +142,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="faq-section">
+      <section id="faq" className="faq-section">
         <h2>Frequently Asked Questions</h2>
         <div className="faq-container">
           <div className="faq-card">
@@ -148,7 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="contact-section">
+      <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
         <p className="contact-subtitle">
           We'd love to hear from you. Send us a message anytime.

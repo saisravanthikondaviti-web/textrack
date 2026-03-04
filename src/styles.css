@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #f5f7fa;
   font-family: "Segoe UI", sans-serif;
@@ -2610,4 +2614,20 @@ html {
 
 .profile-icon:hover {
   color: #ff9800;
+}
+
+/* about section bullet points */
+.about-points {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.about-points li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* sections css */
+section {
+  scroll-margin-top: 90px;
 }
