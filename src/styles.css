@@ -1675,8 +1675,22 @@ html {
 
 /* Glass cards already have frosted glass effect, no changes needed */
 /* Page Layout */
+
+/* VIDEO BACKGROUND */
+/* 
+.bg-video{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+} */
+
 .login-page {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -1688,12 +1702,13 @@ html {
 
 /* Container */
 .login-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
 }
-
 /* Brand highlight */
 .brand {
   color: #ff8c42;
@@ -1819,6 +1834,79 @@ html {
 
 .signup-text a:hover {
   text-decoration: underline;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLETS */
+@media (max-width: 1024px) {
+
+  .login-page {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .main-heading {
+    font-size: 38px;
+  }
+
+  .login-wrapper {
+    width: 340px;
+  }
+}
+
+
+@media (max-width:768px){
+
+  .login-page{
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:0;
+  }
+
+  .bg-video{
+    position:relative;
+    height:40vh;
+  }
+
+  .login-container{
+    width:100%;
+    padding:20px;
+    margin-top:10px;
+  }
+
+  .main-heading{
+    font-size:26px;
+  }
+
+  .login-wrapper{
+    width:100%;
+    max-width:350px;
+  }
+
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+
+  .main-heading {
+    font-size: 24px;
+  }
+
+  .login-wrapper {
+    padding: 25px 20px;
+  }
+
+  .input-group input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .auth-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
 }
 
 /* Admin Dashboard Container */

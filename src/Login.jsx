@@ -63,7 +63,7 @@ function Login() {
 
       <div className="login-container">
 
-        <h1 class="main-heading">
+        <h1 className="main-heading">
           Welcome to <span class="brand">TextileTrack</span>!!!
         </h1>
 
