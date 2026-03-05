@@ -742,7 +742,10 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('https://i.pinimg.com/736x/17/73/fa/1773faf890451d86e8a81fcc1d019f80.jpg') no-repeat center center/cover;
+  background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://i.pinimg.com/1200x/e0/69/98/e069983d03b35435640afc8ad22e1788.jpg') 
+    no-repeat center center/cover;
 }
 
 .hero-overlay {
