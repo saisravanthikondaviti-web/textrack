@@ -52,7 +52,10 @@ export default function HomePage() {
       <section id="home" className="hero-section">
         <div className="hero-overlay">
           <div className="hero-content">
-            <h1>Explore India’s Finest Textiles</h1>
+            <h1>
+              Explore <span className="white-text">India</span>’s Finest
+              <span className="white-text"> Textiles</span>
+            </h1>
             <p>
               From Kanchipuram silks to Banarasi brocades, discover, shop, and
               manage your textile collections seamlessly.

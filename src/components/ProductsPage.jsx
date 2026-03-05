@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useLocation, Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles.css";
 
-// Move constant outside component (fixes ESLint warning)
 const fabricTypes = ["Cotton", "Silk", "Wool", "Linen"];
 
 function Modal({ product, onClose }) {
@@ -14,7 +15,9 @@ function Modal({ product, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content glass" onClick={(e) => e.stopPropagation()}>
         <h2>{product.title}</h2>
+
         <img src={product.imageURL} alt={product.title} />
+
         <p>{product.description}</p>
 
         <p><strong>Fabric Type:</strong> {product.type}</p>
@@ -27,13 +30,16 @@ function Modal({ product, onClose }) {
           <span>Stock: {product.stock}</span>
         </p>
 
-        <button onClick={onClose} className="close-btn">Close</button>
+        <button onClick={onClose} className="close-btn">
+          Close
+        </button>
       </div>
     </div>
   );
 }
 
 export default function ProductsPage() {
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const typeFromQuery = queryParams.get("type");
@@ -42,10 +48,37 @@ export default function ProductsPage() {
   const [filter, setFilter] = useState(typeFromQuery || "All");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
+
+  const cartCount = cart ? cart.length : 0;
+
+  // Scroll lock when modal opens
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedProduct]);
+
+  // Add to cart with toast
+  const handleAddToCart = (product) => {
+    addToCart(product);
+
+    toast.success("Item added to cart 🛒", {
+      position: "top-right",
+      autoClose: 1500,
+    });
+  };
 
   useEffect(() => {
+
     const fetchProductsByType = async (type) => {
+
       const response = await fetch(
         `https://api.unsplash.com/search/photos?query=${type}+fabric&per_page=5&client_id=pNnM32pfVS32O67pIJn_fOFNs8kmSMT4oDe0mCOikSU`
       );
@@ -69,18 +102,25 @@ export default function ProductsPage() {
     };
 
     const fetchAllProducts = async () => {
+
       try {
+
         const allProductsArrays = await Promise.all(
           fabricTypes.map((type) => fetchProductsByType(type))
         );
 
         setProducts(allProductsArrays.flat());
+
       } catch (error) {
+
         console.error("Error fetching Unsplash images:", error);
+
       }
+
     };
 
     fetchAllProducts();
+
   }, []);
 
   const filteredProducts =
@@ -93,10 +133,13 @@ export default function ProductsPage() {
   return (
     <div>
 
+      <ToastContainer />
+
       {/* Filter Bar */}
       <div className="filter-bar">
 
         <div className="filter-buttons">
+
           <button
             className={`filter-btn ${filter === "All" ? "active-filter" : ""}`}
             onClick={() => setFilter("All")}
@@ -113,11 +156,12 @@ export default function ProductsPage() {
               {type}
             </button>
           ))}
+
         </div>
 
-        {/* Go to Cart */}
+        {/* Go To Cart */}
         <Link to="/user/cart" className="cart-btn">
-          🛒 Go to Cart
+          🛒 Go to Cart ({cartCount})
         </Link>
 
       </div>
@@ -128,6 +172,7 @@ export default function ProductsPage() {
         {filteredProducts.length === 0 && <p>Loading products...</p>}
 
         {filteredProducts.map((p) => (
+
           <div className="glass-card" key={p.id}>
 
             <img src={p.imageURL} alt={p.title} />
@@ -150,7 +195,7 @@ export default function ProductsPage() {
 
               <button
                 disabled={p.stock === 0}
-                onClick={() => addToCart(p)}
+                onClick={() => handleAddToCart(p)}
                 className={`add-btn ${p.stock === 0 ? "disabled-btn" : ""}`}
               >
                 {p.stock === 0 ? "Out of Stock" : "Add to Cart"}
@@ -166,10 +211,12 @@ export default function ProductsPage() {
             </div>
 
           </div>
+
         ))}
+
       </div>
 
-      {/* Product Modal */}
+      {/* Modal */}
       <Modal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
