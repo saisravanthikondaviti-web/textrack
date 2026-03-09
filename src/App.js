@@ -56,45 +56,52 @@ function App() {
     ProfilePage
   });
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Login / redirect */}
-          <Route
-            path="/"
-            element={!user ? <Login /> : <Navigate to={`/${role}`} />}
-          />
+  <CartProvider>
+    <BrowserRouter>
+      <Routes>
 
-          {/* Admin */}
-          <Route
-            path="/admin"
-            element={
-              user && role === "admin" ? <AdminDashboard /> : <Navigate to="/" />
-            }
-          />
+        {/* Home page FIRST */}
+        <Route path="/" element={<HomePage />} />
 
-          {/* Textile */}
-          <Route path="/textiles" element={<TextileDashboard />} />
+        {/* Login page */}
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to={`/${role}`} />}
+        />
 
-          {/* User dashboard with nested routes */}
-          <Route
-            path="/user/*"
-            element={user && role === "user" ? <UserDashboard /> : <Navigate to="/" />}
-          >
-            <Route index element={<HomePage />} />             {/* /user */}
-            <Route path="products" element={<ProductsPage />} />  {/* /user/products */}
-            <Route path="cart" element={<CartPage />} />           {/* /user/cart */}
-            <Route path="checkout" element={<Checkout />} />       {/* /user/checkout */}
-            <Route path="orders" element={<OrdersPage />} />       {/* /user/orders */}
-            <Route path="profile" element={<ProfilePage />} />     {/* /user/profile */}
-          </Route>
+        {/* Admin */}
+        <Route
+          path="/admin"
+          element={
+            user && role === "admin" ? <AdminDashboard /> : <Navigate to="/login" />
+          }
+        />
 
-          {/* fallback */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
-  );
+        {/* Textile */}
+        <Route path="/textiles" element={<TextileDashboard />} />
+
+        {/* USER DASHBOARD */}
+        <Route
+          path="/user/*"
+          element={
+            user && role === "user" ? <UserDashboard /> : <Navigate to="/login" />
+          }
+        >
+          <Route index element={<HomePage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="orders" element={<OrdersPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
+
+        {/* fallback */}
+        <Route path="*" element={<Navigate to="/" />} />
+
+      </Routes>
+    </BrowserRouter>
+  </CartProvider>
+);
 }
 
 export default App;

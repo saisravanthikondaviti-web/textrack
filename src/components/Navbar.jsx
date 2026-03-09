@@ -38,10 +38,9 @@ export default function Navbar() {
 
       {/* Nav Links */}
       <div className={`nav-links ${menuOpen ? "show" : ""}`}>
-        <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
-        <li><a href="#about">About</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <NavLink to="/user" end>
+          Home
+        </NavLink>
         <NavLink to="/user/products" onClick={() => setMenuOpen(false)}>Products</NavLink>
         <NavLink to="/user/cart" onClick={() => setMenuOpen(false)}>Cart</NavLink>
         <NavLink to="/user/orders" onClick={() => setMenuOpen(false)}>Orders</NavLink>

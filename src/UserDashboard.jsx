@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import "../src/styles.css";
+import "./styles.css";
 
 export default function UserDashboard() {
   return (
