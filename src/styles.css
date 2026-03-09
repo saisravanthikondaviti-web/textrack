@@ -1690,7 +1690,7 @@ html {
 
 /* VIDEO SECTION (LEFT SIDE) */
 .bg-video{
-  width:60%;
+  /* width:60%; */
   height:100vh;
   object-fit:cover;
 }
