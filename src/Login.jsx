@@ -64,7 +64,7 @@ function Login() {
       <div className="login-container">
 
         <h1 className="main-heading">
-          Welcome to <span class="brand">TextileTrack</span>!!!
+          Welcome to <span className="brand">TextileTrack</span>!!!
         </h1>
 
         <div className="login-wrapper">
