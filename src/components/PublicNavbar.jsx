@@ -35,7 +35,7 @@ export default function PublicNavbar() {
           to="/login"
           className="login-btn"
           style={{
-            background: "#18a9d4",
+            background: "#e95c0b",
             color: "white",
             padding: "10px 14px",
             borderRadius: "8px",

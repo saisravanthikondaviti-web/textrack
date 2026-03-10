@@ -784,7 +784,7 @@ html {
 ========================== */
 .about-section {
   padding: 100px 20px;
-  background: linear-gradient(135deg, #287e8f, #0d1f25, #126388);
+  background:#000000;
   ;
   color: white;
 }
@@ -806,11 +806,15 @@ html {
 .about-text h2 {
   font-size: 2.4rem;
   margin-bottom: 16px;
+  color: #ff8c42;
 }
 
 .about-text p {
-  color: #d6d6d6;
+  color: #ffffff;
+  font-size: small;
+  font-weight: 600;
   line-height: 1.7;
+  margin-top: 12px;
   margin-bottom: 12px;
 }
 
@@ -835,6 +839,7 @@ html {
 }
 
 .featured-cards {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 25px;
@@ -853,13 +858,14 @@ html {
 .featured-card img {
   width: 100%;
   border-radius: 12px;
+  height:250px;
 }
 
 .view-btn {
   margin-top: 12px;
   display: inline-block;
   padding: 8px 16px;
-  background: #f7980a;
+  background: #ff8c42;
   color: white;
   border-radius: 6px;
   text-decoration: none;
@@ -888,7 +894,7 @@ html {
   width: 280px;
   padding: 20px;
   border-radius: 15px;
-  background:linear-gradient(135deg, #287e8f, #0d1f25, #126388);
+  background:#ff8a4288;
   backdrop-filter: blur(10px);
   transition: 0.3s;
   cursor: pointer;
@@ -917,7 +923,7 @@ html {
 
 .contact-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .contact-subtitle {
@@ -970,7 +976,7 @@ html {
   padding: 14px;
   border-radius: 10px;
   border: none;
-  background: #ff7b00;
+  background: #ff8c42;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -978,7 +984,7 @@ html {
 }
 
 .contact-form button:hover {
-  background: #ff9500;
+  background: #0eb2db;
 }
 
 /* contact info cards */
@@ -1038,7 +1044,7 @@ html {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #f3bf12f5;
+  color: #ff8c42;
 }
 
 /* Hamburger Icon */
@@ -1253,7 +1259,7 @@ html {
 /* ================= PREMIUM FOOTER ================= */
 
 .premium-footer {
-  background: linear-gradient(135deg, #287e8f, #0d1f25, #126388);
+  background: #000000;
   color: #d1d5db;
   padding-top: 60px;
   margin-top: 60px;
@@ -1312,7 +1318,7 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 15px 15px;
-  background: linear-gradient(135deg, #287e8f, #0d1f25, #126388);
+  background: #000000;
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -1664,7 +1670,7 @@ html {
 .hero-btn {
   margin-top: 20px;
   padding: 12px 30px;
-  background-color: #ff7f50;
+  background-color: #ff8c42;
   color: #fff;
   border-radius: 8px;
   text-decoration: none;
